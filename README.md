@@ -26,7 +26,7 @@ randomshiii    (if reboot goto /opt/gophish and ./gophish
 
 1. yum -y install epel-release
 2. yum -y install certbot
-3. certbot certonly -d <domain> --manual --preferred-challenges dns
+3. certbot certonly -d domain.com --manual --preferred-challenges dns
 
 
     
