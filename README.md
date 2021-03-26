@@ -31,9 +31,9 @@ randomshiii    (if reboot goto /opt/gophish and ./gophish
 
     
 ***Step 4: Copy the key and cert files to the gophish directory***
-sudo cp /etc/letsencrypt/live/<your domain>/privkey.pem /opt/gophish/domain.key
+sudo cp /etc/letsencrypt/live/domain.com/privkey.pem /opt/gophish/domain.key
 
-sudo cp /etc/letsencrypt/live/<your domain>/fullchain.pem /opt/gophish/domain.crt
+sudo cp /etc/letsencrypt/live/domain.com/fullchain.pem /opt/gophish/domain.crt
 
 sudo nano /opt/gophish/config.json
 
