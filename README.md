@@ -1,5 +1,5 @@
 # gophish-ssl
-randomshiii
+randomshiii    (if reboot goto /opt/gophish and ./gophish
 ===
 
 ***Step 1: 
