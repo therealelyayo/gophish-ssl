@@ -31,11 +31,13 @@ randomshiii    (if reboot goto /opt/gophish and ./gophish
 
     
 ***Step 4: Copy the key and cert files to the gophish directory***
-sudo cp /etc/letsencrypt/live/domain.com/privkey.pem /opt/gophish/domain.key
 
-sudo cp /etc/letsencrypt/live/domain.com/fullchain.pem /opt/gophish/domain.crt
+sudo cp /etc/letsencrypt/live/yourdomain.com/privkey.pem /opt/gophish/domain.key  and  gophish_admin.key
+
+sudo cp /etc/letsencrypt/live/yourdomain.com/fullchain.pem /opt/gophish/domain.crt   and gophish_admin.crt
 
 sudo nano /opt/gophish/config.json
+
 
     fix domain.key and domain.crt in and set all ip to 0.0.0.0
     
