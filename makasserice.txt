@@ -1,0 +1,50 @@
+Knowing this issue (#337) is closed, however I thought I'd add this; not perfect by any means but works like a champ...
+file : /etc/init.d/gophish
+
+#!/bin/bash
+# /etc/init.d/gophish
+# initialization file for stop/start of gophish application server
+#
+# chkconfig: - 64 36
+# description: stops/starts gophish application server
+# processname:gophish
+# config:/opt/goapps/src/github.com/gophish/gophish/config.json
+
+# define script variables
+
+processName=Gophish
+process=gophish
+appDirectory=/opt/goapps/src/github.com/gophish/gophish
+logfile=/var/log/gophish/gophish.log
+errfile=/var/log/gophish/gophish.error
+
+start() {
+    echo 'Starting '${processName}'...'
+    cd ${appDirectory}
+    nohup ./$process >>$logfile 2>>$errfile &
+    sleep 1
+}
+
+stop() {
+    echo 'Stopping '${processName}'...'
+    pid=$(/usr/sbin/pidof ${process})
+    kill ${pid}
+    sleep 1 
+}
+
+status() {
+    pid=$(/usr/sbin/pidof ${process})
+    if [[ "$pid" != "" ]]; then
+        echo ${processName}' is running...'
+    else
+        echo ${processName}' is not running...'
+    fi
+}
+
+case $1 in
+    start|stop|status) "$1" ;;
+esac
+
+Change directory to '/etc/init.d/' and make the file executable - 'chmod +x gophish'. Use 'chkconfig --add gophish' and 'chkconfig --levels [0123456] gophish on' to set and configure the init.d process - set the runlevels according to your system. I used 2345 for startup and shutdown scripts. You'll also need to create the '/var/log/gophish' directory accordingly for the log & error files, they'll be created auto-magically for ya when gophish is started.
+
+Hopefully this helps someone out...
